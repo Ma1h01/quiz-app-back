@@ -38,16 +38,16 @@ public class QuizController {
         return quizService.create(numQ, title);
     }
 
-    @GetMapping("get/{id}")
-    public ResponseEntity<List<QuestionWrapper>> getQuiz(@PathVariable Integer id) {
-        return quizService.getQuizQuestions(id);
+    @GetMapping("get")
+    public ResponseEntity<List<QuestionWrapper>> getQuiz() {
+        return quizService.getQuizQuestions();
     }
 
     @GetMapping("get-all")
     public ResponseEntity<List<QuestionWrapper>> getAllQuiz() {
         return quizService.getAllQuizQuestions();
     }
-
+    
     @PostMapping("submit/{id}")
     public ResponseEntity<Integer> submitQuiz(@PathVariable Integer id, @RequestBody List<Response> respnses) {
         return quizService.calculateQuiz(id, respnses);

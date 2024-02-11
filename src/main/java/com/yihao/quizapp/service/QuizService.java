@@ -55,10 +55,10 @@ public class QuizService {
         return new ResponseEntity<>("Failure", HttpStatus.BAD_REQUEST);
     }
 
-    public ResponseEntity<List<QuestionWrapper>> getQuizQuestions(Integer id) {
+    public ResponseEntity<List<QuestionWrapper>> getQuizQuestions() {
         try {
             // Optional type allows you to check whether there is the requested entry in the table
-            Optional<Quiz> quiz = quizDao.findById(id);
+            Optional<Quiz> quiz = quizDao.findARandomQuiz();
             List<Question> questions = quiz.get().getQuestions();
             // Need to manually convert Question to QuestionWrapper because we dont want to pass fields like 'rightAnswer' to
             // the client
@@ -97,23 +97,23 @@ public class QuizService {
         try {
             Optional<Quiz> quiz = quizDao.findById(id);
             List<Question> questions = quiz.get().getQuestions();
-            questions.sort(new Comparator<Question>() {
+            // questions.sort(new Comparator<Question>() {
 
-                @Override
-                public int compare(Question o1, Question o2) {
-                    return o1.getId() - o2.getId();
-                }
+            //     @Override
+            //     public int compare(Question o1, Question o2) {
+            //         return o1.getId() - o2.getId();
+            //     }
                 
-            });
+            // });
 
-            respnses.sort(new Comparator<Response>() {
+            // respnses.sort(new Comparator<Response>() {
 
-                @Override
-                public int compare(Response o1, Response o2) {
-                    return o1.getId() - o2.getId();
-                }
+            //     @Override
+            //     public int compare(Response o1, Response o2) {
+            //         return o1.getId() - o2.getId();
+            //     }
                 
-            });
+            // });
             int sum = 0;
             int i = 0;
             for (Response response : respnses) {

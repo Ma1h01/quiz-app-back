@@ -11,7 +11,7 @@ import java.util.List;
 
 
 // Abstract out the seven steps to write and process a SQL query for any CRUD operation
-@Repository // <table name, type of primary key>
+@Repository // <model name, type of primary key>
 public interface QuestionDao extends JpaRepository<Question, Integer>{
 
     // JPA is smart enough to find any table entry by any one column.

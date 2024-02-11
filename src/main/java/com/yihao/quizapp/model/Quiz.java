@@ -17,7 +17,7 @@ public class Quiz {
     private Integer id;
     private String title;
 
-    // This annotation specifie the relationship of two entitie
+    // This annotation specifies the relationship of two entities
     @ManyToMany
     private List<Question> questions;
 }
